@@ -1,4 +1,4 @@
 const Cardio = require("./cardio");
-const Post = require("./post");
+const Resistance = require("./resistance");
 
 module.exports = { Cardio, Post };
