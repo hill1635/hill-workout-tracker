@@ -13,3 +13,5 @@ const { Cardio, Resistance } = require("../models");
 // /api/workouts/range
 
 //GET request for workouts in range
+
+module.exports = router;

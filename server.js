@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const router = require("./routes/api.js");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ const public = path.join(__dirname, "/public");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(require("./routes/api.js"));
+app.use(router);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout_app", {
     useNewUrlParser: true,
