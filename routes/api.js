@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Cardio, Resistance } = require("../models");
+const { Workout, Exercise } = require("../models");
 
 // /api/workouts
 
