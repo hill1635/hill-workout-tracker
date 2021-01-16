@@ -40,7 +40,41 @@ app.get("/api/workouts", function (req, res) {
         });
 });
 
+//Add workout
+app.post("/api/workouts", function ({ body }, res) {
+    db.Workout.create(body)
+        .then((dbWorkout) => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
 
+});
+
+//Add exercise
+app.put("/api/workouts/:id", function (req, res) {
+    db.Workout.findOneAndUpdate(
+        {
+            _id: mongoose.Types.ObjectId(req.params.id)
+        },
+        {
+            $push: {
+                exercises: req.body
+            }
+        },
+        (error, edited) => {
+            if (error) {
+                console.log(error);
+                res.send(error);
+            } else {
+                // console.log("req.body: ", req.body.toString());
+                console.log(edited);
+                res.send(edited);
+            }
+        }
+    );
+});
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}.`);
 });
