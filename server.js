@@ -14,20 +14,20 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(router);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 app.get("/stats", function (req, res) {
-    res.sendFile(path.join(public, "stats.html"));
+  res.sendFile(path.join(public, "stats.html"));
 });
 
 app.get("/exercise", function (req, res) {
-    res.sendFile(path.join(public, "exercise.html"));
+  res.sendFile(path.join(public, "exercise.html"));
 });
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}.`);
+  console.log(`App running on port ${PORT}.`);
 });
