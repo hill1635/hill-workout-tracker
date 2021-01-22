@@ -1,6 +1,14 @@
 const router = require("express").Router();
 const Workout = require("../models/workout");
 
+const getLastWorkout = Workout.aggregate([
+  {
+    $addFields: {
+        totalDuration: { $sum: "$duration" },
+    },
+  },
+]);
+
 router.get("/api/workouts", function (req, res) {
   Workout.find({})
     .sort({ day: -1 })
