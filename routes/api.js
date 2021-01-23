@@ -1,19 +1,23 @@
 const router = require("express").Router();
 const Workout = require("../models/workout");
 
-const getLastWorkout = Workout.aggregate([
-  {
-    $addFields: {
-        totalDuration: { $sum: "$duration" },
-    },
-  },
-]);
-
 router.get("/api/workouts", function (req, res) {
-  Workout.find({})
-    .sort({ day: -1 })
-    .limit(1)
+  Workout
+  .aggregate([
+    {
+      $sort: { day: -1},
+    },
+    {
+      $limit: 1,
+    },
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercises.duration" },
+      },
+    },
+  ])
     .then((dbWorkout) => {
+      console.log("workout: ", dbWorkout);
       res.json(dbWorkout);
     })
     .catch((err) => {
@@ -54,9 +58,20 @@ router.put("/api/workouts/:id", function (req, res) {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-  Workout.find({})
-    .sort({ day: -1 })
-    .limit(7)
+  Workout
+  .aggregate([
+    {
+      $sort: { day: -1 },
+    },
+    {
+      $limit: 7,
+    },
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercises.duration" },
+      },
+    },
+  ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
