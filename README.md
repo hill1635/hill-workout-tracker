@@ -33,3 +33,17 @@ As with most of these assignments, getting rid of bloat and making the code more
 The other challenge that came up when deploying MongoDB Atlas was that the database seed was not importing into the MongoDB Atlas database, so the app starts with a blank slate.
 
 ## Screenshots
+Homepage:
+<img width="1440" alt="homepage" src="https://user-images.githubusercontent.com/68754392/105881748-1e34c100-5fc2-11eb-9986-5d05695ec078.png">
+
+New Workout:
+<img width="1440" alt="new workout" src="https://user-images.githubusercontent.com/68754392/105882103-8388b200-5fc2-11eb-9e49-1f61e8fb4935.png">
+
+Adding Activity:
+<img width="1440" alt="add activity" src="https://user-images.githubusercontent.com/68754392/105882148-90a5a100-5fc2-11eb-8b0b-7f2a03fe6af2.png">
+
+Updated Workout:
+<img width="1440" alt="updated workout" src="https://user-images.githubusercontent.com/68754392/105882204-9ef3bd00-5fc2-11eb-9c4c-65f089df4407.png">
+
+Stats Page:
+<img width="1440" alt="stats" src="https://user-images.githubusercontent.com/68754392/105882233-a74bf800-5fc2-11eb-8048-18468aeeee8d.png">
